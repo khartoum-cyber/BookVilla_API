@@ -13,5 +13,11 @@ namespace BookVilla_VillaAPI.Controllers
         {
             return VillaStore.villaList;
         }
+
+        [HttpGet("{id:int}")]
+        public VillaDTO GetVilla(int id)
+        {
+            return VillaStore.villaList.FirstOrDefault(u => u.Id == id);
+        }
     }
 }
