@@ -1,4 +1,6 @@
 
+using BookVilla_VillaAPI.Data;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 namespace BookVilla_VillaAPI
@@ -10,6 +12,10 @@ namespace BookVilla_VillaAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddDbContext<ApplicationDBContext>(option => {
+                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
+            });
 
             Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
                 .WriteTo.File("log/villaLogs.txt", rollingInterval: RollingInterval.Day).CreateLogger();
