@@ -17,7 +17,7 @@ namespace BookVilla_VillaAPI
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
 
-            Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
+            Log.Logger = new LoggerConfiguration().MinimumLevel.Information()
                 .WriteTo.File("log/villaLogs.txt", rollingInterval: RollingInterval.Day).CreateLogger();
 
             builder.Host.UseSerilog();

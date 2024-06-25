@@ -3,6 +3,7 @@ using BookVilla_VillaAPI.Models;
 using BookVilla_VillaAPI.Models.DTO;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookVilla_VillaAPI.Controllers
 {
@@ -18,6 +19,7 @@ namespace BookVilla_VillaAPI.Controllers
             _db = db;
             _logger = logger;
         }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
@@ -137,7 +139,7 @@ namespace BookVilla_VillaAPI.Controllers
             {
                 return BadRequest();
             }
-            var villa = _db.Villas.FirstOrDefault(u => u.Id == id);
+            var villa = _db.Villas.AsNoTracking().FirstOrDefault(u => u.Id == id);
 
             VillaDTO villaDTO = new()
             {
