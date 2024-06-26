@@ -13,6 +13,8 @@ namespace BookVilla_VillaAPI
 
             // Add services to the container.
 
+            builder.Services.AddAutoMapper(typeof(MappingConfig));
+
             builder.Services.AddDbContext<ApplicationDBContext>(option => {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
