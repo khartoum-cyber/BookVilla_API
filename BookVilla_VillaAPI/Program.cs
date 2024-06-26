@@ -1,5 +1,7 @@
 
 using BookVilla_VillaAPI.Data;
+using BookVilla_VillaAPI.Repository;
+using BookVilla_VillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -14,6 +16,8 @@ namespace BookVilla_VillaAPI
             // Add services to the container.
 
             builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+            builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 
             builder.Services.AddDbContext<ApplicationDBContext>(option => {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
