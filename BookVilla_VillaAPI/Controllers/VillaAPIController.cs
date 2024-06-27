@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
-using BookVilla_VillaAPI.Data;
 using BookVilla_VillaAPI.Models;
 using BookVilla_VillaAPI.Models.DTO;
-using BookVilla_VillaAPI.Repository;
 using BookVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookVilla_VillaAPI.Controllers
 {
