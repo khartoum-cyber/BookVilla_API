@@ -13,6 +13,10 @@ namespace BookVilla_VillaAPI
 
             CreateMap<Villa, VillaDTOcreate>().ReverseMap();
             CreateMap<Villa, VillaDTOupdate>().ReverseMap();
+
+            CreateMap<VillaNumber, VillaNumberDTO>().ReverseMap();
+            CreateMap<VillaNumber, VillaNumberDTOcreate>().ReverseMap();
+            CreateMap<VillaNumber, VillaNumberDTOupdate>().ReverseMap();
         }
     }
 }
