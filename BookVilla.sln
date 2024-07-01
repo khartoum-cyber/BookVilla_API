@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookVilla_VillaAPI", "BookV
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookVilla_Web", "BookVilla_Web\BookVilla_Web.csproj", "{93A1826C-DE7B-4F17-AFA1-BF7E12431ABE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookVilla_Utility", "BookVilla_Utility\BookVilla_Utility.csproj", "{D4EC9B64-B734-44FA-9102-29D357E976D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{93A1826C-DE7B-4F17-AFA1-BF7E12431ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93A1826C-DE7B-4F17-AFA1-BF7E12431ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93A1826C-DE7B-4F17-AFA1-BF7E12431ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4EC9B64-B734-44FA-9102-29D357E976D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4EC9B64-B734-44FA-9102-29D357E976D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4EC9B64-B734-44FA-9102-29D357E976D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4EC9B64-B734-44FA-9102-29D357E976D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
