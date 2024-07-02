@@ -1,3 +1,6 @@
+using BookVilla_Web.Services.IServices;
+using BookVilla_Web.Services;
+
 namespace BookVilla_Web
 {
     public class Program
@@ -10,6 +13,10 @@ namespace BookVilla_Web
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+            builder.Services.AddHttpClient<IVillaService, VillaService>();
+
+            builder.Services.AddScoped<IVillaService, VillaService>();
 
             var app = builder.Build();
 
