@@ -17,20 +17,20 @@ namespace BookVilla_Web.Services
             _httpClient = httpClient;
         }
 
-        public async Task<T> SendAsync<T>(APIRequest aPIRequest)
+        public async Task<T> SendAsync<T>(APIRequest apiRequest)
         {
             try
             {
                 var client = _httpClient.CreateClient("VillaAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
                 message.Headers.Add("Accept", "application/json");
-                message.RequestUri = new Uri(aPIRequest.Url);
-                if (aPIRequest.Data != null)
+                message.RequestUri = new Uri(apiRequest.Url);
+                if (apiRequest.Data != null)
                 {
-                    message.Content = new StringContent(JsonConvert.SerializeObject(aPIRequest.Data),
+                    message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data),
                         Encoding.UTF8, "application/json");
                 }
-                switch (aPIRequest.ApiType)
+                switch (apiRequest.ApiType)
                 {
                     case SD.ApiType.POST:
                         message.Method = HttpMethod.Post;
