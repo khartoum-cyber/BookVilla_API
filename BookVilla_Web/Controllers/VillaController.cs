@@ -29,5 +29,27 @@ namespace BookVilla_Web.Controllers
             }
             return View(list);
         }
-    }
+
+		public async Task<IActionResult> CreateVilla()
+		{
+			List<VillaDTO> list = new();
+
+			return View();
+		}
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+		public async Task<IActionResult> CreateVilla(VillaDTOcreate model)
+		{
+            if (ModelState.IsValid)
+            {
+                var response = await _villaService.CreateAsync<APIResponse>(model);
+                if (response != null && response.IsSuccess)
+                {
+                    return RedirectToAction(nameof(IndexVilla));
+                }
+            }
+			return View(model);
+		}
+	}
 }
