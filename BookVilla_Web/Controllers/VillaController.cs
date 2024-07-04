@@ -32,8 +32,6 @@ namespace BookVilla_Web.Controllers
 
 		public async Task<IActionResult> CreateVilla()
 		{
-			List<VillaDTO> list = new();
-
 			return View();
 		}
 
