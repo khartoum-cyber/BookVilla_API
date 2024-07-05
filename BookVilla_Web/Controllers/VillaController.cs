@@ -79,7 +79,7 @@ namespace BookVilla_Web.Controllers
 
         public async Task<IActionResult> DeleteVilla(int villaId)
         {
-            var response = await _villaService.DeleteAsync<APIResponse>(villaId);
+            var response = await _villaService.GetAsync<APIResponse>(villaId);
             if (response != null && response.IsSuccess)
             {
                 VillaDTO model = JsonConvert.DeserializeObject<VillaDTO>(Convert.ToString(response.Result));
@@ -88,7 +88,7 @@ namespace BookVilla_Web.Controllers
             return NotFound();
         }
 
-        [HttpDelete]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteVilla(VillaDTO model)
         {
