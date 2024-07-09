@@ -33,7 +33,7 @@ namespace BookVilla_VillaAPI.Controllers
             try
             {
                 _logger.LogInformation("Getting all villas.");
-                var villaNumberList = await _repoVillaNumber.GetAllAsync();
+                var villaNumberList = await _repoVillaNumber.GetAllAsync(includeProperties:"Villa");
                 _response.Result = _mapper.Map<List<VillaNumberDTO>>(villaNumberList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
