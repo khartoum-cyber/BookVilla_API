@@ -142,12 +142,12 @@ namespace BookVilla_Web.Controllers
 
         public async Task<IActionResult> DeleteVillaNumber(int villaNo)
         {
-            VillaNumberUpdateViewModel villanNumberViewModel = new();
+            VillaNumberDeleteViewModel villanNumberViewModel = new();
             var response = await _villaNumberService.GetAsync<APIResponse>(villaNo);
             if (response != null && response.IsSuccess)
             {
                 VillaNumberDTO model = JsonConvert.DeserializeObject<VillaNumberDTO>(Convert.ToString(response.Result));
-                villanNumberViewModel.VillaNumber = _mapper.Map<VillaNumberDTOupdate>(model);
+                villanNumberViewModel.VillaNumber = model;
             }
 
             response = await _villaService.GetAllAsync<APIResponse>();
