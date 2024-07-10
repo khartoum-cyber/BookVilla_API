@@ -88,7 +88,7 @@ namespace BookVilla_VillaAPI.Controllers
             {
                 if (await _repoVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
                 {
-                    ModelState.AddModelError("CustomError", "Villa number already exists!");
+                    ModelState.AddModelError("ErrorMessages", "Villa number already exists!");
                     return BadRequest(ModelState);
                 }
                 if (await _repo.GetAsync(u => u.Id == createDTO.VillaID) == null)
