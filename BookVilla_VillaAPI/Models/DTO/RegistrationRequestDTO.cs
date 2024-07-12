@@ -1,6 +1,6 @@
 ﻿namespace BookVilla_VillaAPI.Models.DTO
 {
-    public class ReqistrationRequestDTO
+    public class RegistrationRequestDTO
     {
         public string UserName { get; set; }
         public string Name { get; set; }
