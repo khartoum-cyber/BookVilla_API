@@ -8,10 +8,12 @@ namespace BookVilla_VillaAPI.Repository
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDBContext _db;
+        private string secretKey;
 
-        public UserRepository(ApplicationDBContext db)
+        public UserRepository(ApplicationDBContext db, IConfiguration configuration)
         {
             _db = db;
+            secretKey = configuration.GetValue<string>("ApiSettings:Secret");
         }
         public bool IsUniqueUser(string username)
         {
