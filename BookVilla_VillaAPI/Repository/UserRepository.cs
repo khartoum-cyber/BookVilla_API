@@ -53,6 +53,15 @@ namespace BookVilla_VillaAPI.Repository
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            LoginResponseDTO loginResponseDTO = new LoginResponseDTO()
+            {
+                Token = tokenHandler.WriteToken(token),
+                User = user
+
+            };
+            return loginResponseDTO;
         }
 
         public async Task<LocalUser> Register(RegistrationRequestDTO registrationRequestDTO)
