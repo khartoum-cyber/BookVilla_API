@@ -1,7 +1,11 @@
-﻿using BookVilla_VillaAPI.Data;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using BookVilla_VillaAPI.Data;
 using BookVilla_VillaAPI.Models;
 using BookVilla_VillaAPI.Models.DTO;
 using BookVilla_VillaAPI.Repository.IRepository;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BookVilla_VillaAPI.Repository
 {
@@ -34,6 +38,21 @@ namespace BookVilla_VillaAPI.Repository
             {
                 return null;
             }
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var key = Encoding.ASCII.GetBytes(secretKey);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
         }
 
         public async Task<LocalUser> Register(RegistrationRequestDTO registrationRequestDTO)
