@@ -61,8 +61,8 @@ namespace BookVilla_VillaAPI.Repository
             var token = tokenHandler.CreateToken(tokenDescriptor);
             LoginResponseDTO loginResponseDTO = new LoginResponseDTO()
             {
-                Token = "",
-                User = null
+                Token = tokenHandler.WriteToken(token),
+                User = user
             };
 
             return loginResponseDTO;
