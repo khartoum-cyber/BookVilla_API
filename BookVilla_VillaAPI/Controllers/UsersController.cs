@@ -12,6 +12,7 @@ namespace BookVilla_VillaAPI.Controllers
     {
         private readonly IUserRepository _userRepo;
         protected APIResponse _response;
+
         public UsersController(IUserRepository userRepo)
         {
             _userRepo = userRepo;
@@ -59,8 +60,10 @@ namespace BookVilla_VillaAPI.Controllers
                 _response.ErrorMessages.Add("Error while registering");
                 return BadRequest(_response);
             }
+
             _response.StatusCode = HttpStatusCode.OK;
             _response.IsSuccess = true;
             return Ok(_response);
         }
+    }
 }
