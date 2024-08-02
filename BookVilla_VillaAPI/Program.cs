@@ -2,6 +2,7 @@
 using BookVilla_VillaAPI.Data;
 using BookVilla_VillaAPI.Repository;
 using BookVilla_VillaAPI.Repository.IRepository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -22,6 +23,12 @@ namespace BookVilla_VillaAPI
             builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
+
+            builder.Services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
 
             builder.Services.AddDbContext<ApplicationDBContext>(option => {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
@@ -48,8 +55,9 @@ namespace BookVilla_VillaAPI
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
+            app.UseAuthorization();
 
             app.MapControllers();
 
