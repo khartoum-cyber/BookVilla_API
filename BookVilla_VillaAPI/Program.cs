@@ -4,7 +4,9 @@ using BookVilla_VillaAPI.Repository;
 using BookVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
 
 namespace BookVilla_VillaAPI
 {
@@ -24,11 +26,24 @@ namespace BookVilla_VillaAPI
 
             builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
 
+            var key = builder.Configuration.GetValue<string>("ApiSettings:Secret");
+
             builder.Services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x => {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
+
 
             builder.Services.AddDbContext<ApplicationDBContext>(option => {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
