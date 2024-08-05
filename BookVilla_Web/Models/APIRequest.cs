@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using static BookVilla_Utility.SD;
+﻿using static BookVilla_Utility.SD;
 
 namespace BookVilla_Web.Models
 {

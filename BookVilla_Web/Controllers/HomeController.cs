@@ -4,7 +4,6 @@ using BookVilla_Web.Models.DTO;
 using BookVilla_Web.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace BookVilla_Web.Controllers
 {
