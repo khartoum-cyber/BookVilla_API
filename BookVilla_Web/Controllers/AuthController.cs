@@ -45,5 +45,15 @@ namespace BookVilla_Web.Controllers
             }
             return View();
         }
+
+        public async Task<IAuthService> Logout()
+        {
+            return View();
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
