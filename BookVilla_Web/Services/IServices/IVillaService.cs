@@ -4,10 +4,10 @@ namespace BookVilla_Web.Services.IServices
 {
     public interface IVillaService
     {
-        Task<T> GetAllAsync<T>();
-        Task<T> GetAsync<T>(int id);
-        Task<T> CreateAsync<T>(VillaDTOcreate dto);
-        Task<T> UpdateAsync<T>(VillaDTOupdate dto);
-        Task<T> DeleteAsync<T>(int id);
+        Task<T> GetAllAsync<T>(string token);
+        Task<T> GetAsync<T>(int id, string token);
+        Task<T> CreateAsync<T>(VillaDTOcreate dto, string token);
+        Task<T> UpdateAsync<T>(VillaDTOupdate dto, string token);
+        Task<T> DeleteAsync<T>(int id, string token);
     }
 }

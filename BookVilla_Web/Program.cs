@@ -32,7 +32,7 @@ namespace BookVilla_Web
                 {
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                    options.LoginPath = "/Auth/Login";
+                    options.LoginPath = "/Auth/Loin";
                     options.AccessDeniedPath = "/Auth/AccessDenied";
                     options.SlidingExpiration = true;
                 });

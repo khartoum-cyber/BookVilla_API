@@ -4,6 +4,7 @@ using BookVilla_Web.Models;
 using BookVilla_Web.Services.IServices;
 using Newtonsoft.Json;
 using System.Text;
+using System.Net.Http.Headers;
 
 namespace BookVilla_Web.Services
 {
@@ -48,6 +49,11 @@ namespace BookVilla_Web.Services
                 }
 
                 HttpResponseMessage apiResponse = null;
+
+                if (!string.IsNullOrEmpty(apiRequest.Token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                }
 
                 apiResponse = await client.SendAsync(message);
 
