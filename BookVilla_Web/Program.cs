@@ -14,6 +14,8 @@ namespace BookVilla_Web
 
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             builder.Services.AddHttpClient<IVillaService, VillaService>();
             builder.Services.AddScoped<IVillaService, VillaService>();
 

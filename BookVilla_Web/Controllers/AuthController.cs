@@ -2,6 +2,7 @@
 using BookVilla_Web.Models;
 using BookVilla_Web.Models.DTO;
 using BookVilla_Web.Services.IServices;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -60,7 +61,9 @@ namespace BookVilla_Web.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            return View();
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.SetString(SD.SessionToken, "");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AccessDenied()
