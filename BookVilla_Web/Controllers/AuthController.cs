@@ -46,7 +46,7 @@ namespace BookVilla_Web.Controllers
             return View();
         }
 
-        public async Task<IAuthService> Logout()
+        public async Task<IActionResult> Logout()
         {
             return View();
         }
