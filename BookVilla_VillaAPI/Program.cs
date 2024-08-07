@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
+using Asp.Versioning;
 
 namespace BookVilla_VillaAPI
 {
@@ -20,6 +21,12 @@ namespace BookVilla_VillaAPI
             // Add services to the container.
 
             builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+            builder.Services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+            });
 
             builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 
