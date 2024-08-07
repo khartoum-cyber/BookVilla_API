@@ -1,4 +1,5 @@
-﻿using BookVilla_VillaAPI.Models;
+﻿using Asp.Versioning;
+using BookVilla_VillaAPI.Models;
 using BookVilla_VillaAPI.Models.DTO;
 using BookVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -6,8 +7,9 @@ using System.Net;
 
 namespace BookVilla_VillaAPI.Controllers
 {
-    [Route("api/UsersAUTH")]
+    [Route("api/v{version:apiVersion}/UsersAUTH")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class UsersController : Controller
     {
         private readonly IUserRepository _userRepo;
