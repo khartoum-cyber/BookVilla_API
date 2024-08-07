@@ -102,6 +102,23 @@ namespace BookVilla_VillaAPI
                         new List<string>()
                     }
                 });
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1.0",
+                    Title = "BookVilla V1",
+                    Description = "API to manage Villas",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Contact",
+                        Url = new Uri("https://example.com/contact")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "License",
+                        Url = new Uri("https://example.com/license")
+                    }
+                });
             });
 
             var app = builder.Build();
@@ -110,7 +127,10 @@ namespace BookVilla_VillaAPI
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(options =>
+                {
+                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Book_VillaV1");
+                });
             }
 
             app.UseHttpsRedirection();
