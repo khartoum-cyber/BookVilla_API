@@ -5,7 +5,7 @@ using BookVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace BookVilla_VillaAPI.Controllers
+namespace BookVilla_VillaAPI.Controllers.v1
 {
     [Route("api/v{version:apiVersion}/UsersAUTH")]
     [ApiController]
