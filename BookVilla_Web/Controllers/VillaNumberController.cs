@@ -37,18 +37,18 @@ namespace BookVilla_Web.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> CreateVillaNumber()
         {
-            VillaNumberCreateViewModel villanNumberViewModel = new();
+            VillaNumberCreateViewModel villaNumberViewModel = new();
             var response = await _villaService.GetAllAsync<APIResponse>(HttpContext.Session.GetString(SD.SessionToken));
             if (response != null && response.IsSuccess)
             {
-                villanNumberViewModel.VillaList = JsonConvert.DeserializeObject<List<VillaDTO>>
+                villaNumberViewModel.VillaList = JsonConvert.DeserializeObject<List<VillaDTO>>
                     (Convert.ToString(response.Result)).Select(i => new SelectListItem
                     {
                         Text = i.Name,
                         Value = i.Id.ToString(),
                     });
             }
-            return View(villanNumberViewModel);
+            return View(villaNumberViewModel);
         }
 
         [HttpPost]

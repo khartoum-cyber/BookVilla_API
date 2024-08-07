@@ -29,6 +29,12 @@ namespace BookVilla_VillaAPI.Controllers.v1
             _repo = repo;
         }
 
+        [HttpGet("GetString")]
+        public IEnumerable<string> Get()
+        {
+            return new[] { "string1", "string2" };
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponse>> GetVillaNumbers()

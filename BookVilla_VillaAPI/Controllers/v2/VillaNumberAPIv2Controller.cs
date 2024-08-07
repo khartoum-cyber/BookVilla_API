@@ -31,8 +31,8 @@ namespace BookVilla_VillaAPI.Controllers.v2
             _repo = repo;
         }
 
-        [MapToApiVersion("2.0")]
-        [HttpGet]
+        //[MapToApiVersion("2.0")]
+        [HttpGet("GetString")]
         public IEnumerable<string> Get()
         {
             return new[] { "value1", "value2" };

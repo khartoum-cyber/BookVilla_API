@@ -21,7 +21,7 @@ namespace BookVilla_Web.Services
             {
                 ApiType = SD.ApiType.POST,
                 Data = obj,
-                Url = villaUrl + "/api/UsersAUTH/login"
+                Url = villaUrl + "/api/v1/UsersAUTH/login"
             });
         }
 
@@ -31,7 +31,7 @@ namespace BookVilla_Web.Services
             {
                 ApiType = SD.ApiType.POST,
                 Data = obj,
-                Url = villaUrl + "/api/UsersAUTH/register"
+                Url = villaUrl + "/api/v1/UsersAUTH/register"
             });
         }
     }
