@@ -5,11 +5,11 @@ using BookVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace BookVilla_VillaAPI.Controllers.v1
+namespace BookVilla_VillaAPI.Controllers
 {
     [Route("api/v{version:apiVersion}/UsersAUTH")]
     [ApiController]
-    [ApiVersion("1.0")]
+    [ApiVersionNeutral]
     public class UsersController : Controller
     {
         private readonly IUserRepository _userRepo;
