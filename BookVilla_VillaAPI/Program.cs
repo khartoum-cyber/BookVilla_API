@@ -26,6 +26,10 @@ namespace BookVilla_VillaAPI
             {
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
+            })
+            .AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
             });
 
             builder.Services.AddScoped<IVillaRepository, VillaRepository>();
