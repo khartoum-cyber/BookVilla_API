@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Azure;
 using BookVilla_VillaAPI.Models;
 using BookVilla_VillaAPI.Models.DTO;
 using BookVilla_VillaAPI.Repository.IRepository;

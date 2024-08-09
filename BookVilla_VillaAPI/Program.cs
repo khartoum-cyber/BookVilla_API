@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookVilla_VillaAPI
 {
@@ -67,7 +68,14 @@ namespace BookVilla_VillaAPI
 
             builder.Host.UseSerilog();
 
-            builder.Services.AddControllers().AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
+            builder.Services.AddControllers(options =>
+            {
+                options.CacheProfiles.Add("Default30",
+                    new CacheProfile()
+                    {
+                        Duration = 30
+                    });
+            }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
