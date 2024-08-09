@@ -87,12 +87,14 @@ namespace BookVilla_VillaAPI.Controllers.v1
                 {
                     _logger.LogError("Get Villa Error with Id" + id);
                     _response.StatusCode = HttpStatusCode.BadRequest;
+                    _response.IsSuccess = false;
                     return BadRequest(_response);
                 }
                 var villa = await _repo.GetAsync(u => u.Id == id);
                 if (villa == null)
                 {
                     _response.StatusCode = HttpStatusCode.NotFound;
+                    _response.IsSuccess = false;
                     return NotFound(_response);
                 }
                 _response.Result = _mapper.Map<VillaDTO>(villa);
