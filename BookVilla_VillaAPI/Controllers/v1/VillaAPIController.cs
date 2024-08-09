@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Asp.Versioning;
+using System.Text.Json;
 
 namespace BookVilla_VillaAPI.Controllers.v1
 {
@@ -55,6 +56,9 @@ namespace BookVilla_VillaAPI.Controllers.v1
                 {
                     villaList = villaList.Where(u => u.Name.ToLower().Contains(search));
                 }
+
+                Pagination pagination = new() { PageNumber = pageNumber, PageSize = pageSize };
+                Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagination));
 
                 _logger.LogInformation("Getting all villas.");
                 _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
