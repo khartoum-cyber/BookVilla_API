@@ -35,7 +35,7 @@ namespace BookVilla_VillaAPI.Controllers.v1
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<APIResponse>> GetVillas([FromQuery(Name = "filterOccupancy")] int? occupancy, [FromQuery] string? search, 
-            int pageSize = 3, int pageNumber = 1)
+            int pageSize = 0, int pageNumber = 1)
         {
             try
             {
