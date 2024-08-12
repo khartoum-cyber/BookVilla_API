@@ -11,6 +11,7 @@ using System.Text;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using BookVilla_VillaAPI.Models;
 
 namespace BookVilla_VillaAPI
 {
@@ -64,7 +65,7 @@ namespace BookVilla_VillaAPI
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
 
             Log.Logger = new LoggerConfiguration().MinimumLevel.Information()
                 .WriteTo.File("log/villaLogs.txt", rollingInterval: RollingInterval.Day).CreateLogger();
